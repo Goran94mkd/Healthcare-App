@@ -1,4 +1,6 @@
 const Doctor = require('../models/doctor');
+const Patient = require('../models/patient');
+
 
 module.exports = {
   getAll: async (req, res) => {
@@ -47,5 +49,12 @@ module.exports = {
       error: false,
       message: `Doctor with id #${req.params.id} removed`
     });
-  },
+  },  patients: async (req, res) => {
+    const doctor = await Doctor.findById(req.params.id)
+    const patient = await Patient.find()
+    res.render("doctors/patients", {
+      patients: patient,
+      doctors: doctor,
+    });
+  }
 }
