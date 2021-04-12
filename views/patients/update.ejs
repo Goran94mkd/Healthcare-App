@@ -1,14 +1,11 @@
-<body style="background-color: rgb(230, 230, 230)">
+<body style="background-color: rgb(195, 193, 230)">
 
   <% if (typeof error != 'undefined') { %>
   <div class="alert alert-danger" role="alert">
     <%= error %>
   </div>
   <% } %>
-  <div
-  class="card text-white bg-success mb-3"
-  style="max-width: 18rem; margin: auto; text-align: center"
-  >
+  <div class="card text-white bg-success mb-3" style="max-width: 18rem; margin: auto; text-align: center">
     <div class="card-body">
       <form action="/patients/<%= patient._id %>" method="POST" class="add-card">
         <div class="mb-3">
