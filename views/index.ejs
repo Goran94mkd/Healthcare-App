@@ -1,21 +1,21 @@
 
-<link rel="stylesheet" type="text/css" href="/public/stylesheets/dashboard.css"/>
+<link rel="stylesheet" type="text/css" href="/stylesheets/dashboard.css" />
 
 <div class="container" style="background-color: rgb(244, 244, 248); border-radius: 3%">
   <div class="row">
     <div class="col-6 chart">
-      <canvas id="myChart" width="450" height="200"></canvas>
+      <canvas id="myChart" width="400" height="203"></canvas>
     </div>
     <div class="col-6 chart">
-      <canvas id="myChart2" width="450" height="200"></canvas>
+      <canvas id="myChart3" width="450" height="270"></canvas>
     </div>
   </div>
-  <div class="col-6 chart" style="margin-left: 25%; padding-bottom: 2%">
-    <canvas id="myChart3" width="500" height="250"></canvas>
+  <div class="col-6 chart">
+    <canvas id="myChart2" width="450" height="200"></canvas>
   </div>
 </div>
 
-<div style="color: rgb(195, 193, 230)">
+<div class="ejs">
   <% let medicationArray = [] %> <%prescriptions.forEach(prescription => { %> <%=
   medicationArray.push(prescription.medication) %> <% }) %>
   <% let patientsCityArray = [] %> <%patients.forEach(patient => { %> <%=
@@ -36,7 +36,7 @@
   const medicationsData = Object.values(countMedicationsDuplicates);
   // Remove duplicate values
   const medicationsLabels = [...new Set(medicationsArray)];
-  
+
   let myDoughnutChart = document.getElementById("myChart").getContext("2d");
   let chart1 = new Chart(myDoughnutChart, {
     type: "doughnut",
@@ -72,9 +72,9 @@
       labels: patientsCitiesLabels,
       datasets: [
         { 
-          data: patientsCitiesData, borderWidth: 1,
-          backgroundColor: ["#49A9EA", "#36CAAB", "#34495E", "#B370CF", "#cfa640", "#7b03fc", "#fcf003", "#fc8003", "#2cc227", "#5742f5"],
-          borderColor: ["#49A9EA", "#36CAAB", "#34495E", "#B370CF", "#cfa640", "#7b03fc", "#fcf003", "#fc8003", "#2cc227", "#5742f5"]
+          data: patientsCitiesData, borderWidth: 0,
+          backgroundColor: ["#49A9EA", "#36CAAB", "#34495E", "#B370CF"],
+          borderColor: ["#49A9EA", "#36CAAB", "#34495E", "#B370CF"]
         },
       ],
     },
@@ -116,9 +116,9 @@
       datasets: [
         {
           data: citiesData,
-          backgroundColor: ["#49A9EA", "#36CAAB", "#34495E", "#B370CF", "#cfa640", "#7b03fc", "#fcf003", "#fc8003", "#2cc227", "#5742f5"],
-          borderColor: ["#49A9EA", "#36CAAB", "#34495E", "#B370CF", "#cfa640", "#7b03fc", "#fcf003", "#fc8003", "#2cc227", "#5742f5"],
-          borderWidth: 1,
+          backgroundColor: ["#49A9EA", "#36CAAB", "#34495E", "#B370CF"],
+          borderColor: ["#49A9EA", "#36CAAB", "#34495E", "#B370CF"],
+          borderWidth: 0
         },
       ],
     },

@@ -12,3 +12,17 @@ h1 {
   margin-bottom: 80px;
 }
 
+.ejs {
+  color: rgb(195, 193, 230)
+}
+
+.container{
+  background-color: rgb(244, 244, 248);
+  border-radius: 3%;
+}
+
+.row {
+  height: 150px;
+}
+
+
