@@ -1,6 +1,6 @@
 <div class="p-3 mb-2 bg-success text-white">
   <div class="card" style="width: 18rem;">
-    <div class="card-body" style="background: #aeaeae;">
+    <div class="card-body" style="background-color: #cfe2ff; color: #000">
       <h5 class="card-title"><%= doctors.full_name %></h5>
       <h6 class="card-subtitle mb-2 text-muted">
         <span class="badge rounded-pill bg-success"><%= doctors.specialization %></span>
@@ -19,7 +19,7 @@
         <th scope="col">Age</th>
         <th scope="col">Phone Number</th>
         <th scope="col">City</th>
-        <th scope="col">Actions</th>
+        <th scope="col" style="text-align: center;">Actions</th>
       </tr>
     </thead>
       <tbody>
@@ -31,7 +31,7 @@
               <td><%= patient.age %></td>
               <td><%= patient.phone_number %></td>
               <td><%= patient.city %></td>
-              <td>
+              <td style="text-align: center;">
                 <a href="/patients/<%= patient._id %>" class="btn btn-warning">Edit</a>
                 <button type="button" onclick="deletePatient(`<%= patient._id %>`)" class="btn btn-danger">Delete</button>
               </td>

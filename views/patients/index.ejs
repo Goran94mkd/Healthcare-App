@@ -10,7 +10,7 @@
         <th scope="col">Phone Number</th>
         <th scope="col">City</th>
         <th scope="col">Doctor</th>
-        <th scope="col">Actions</th>
+        <th scope="col" style="text-align: center;">Actions</th>
       </tr>
     </thead>
     <tbody>
@@ -22,7 +22,7 @@
         <td><%= patient.phone_number %></td>
         <td><%= patient.city %></td>
         <td><%= patient.doctor ? patient.doctor.full_name : '' %></td>
-        <td>
+        <td style="text-align: center;">
           <a href="/patients/<%= patient._id %>" class="btn btn-warning">Edit</a>
           <button type="button" onclick="deletePatient(`<%= patient._id %>`)" class="btn btn-danger">Delete</button>
         </td>
