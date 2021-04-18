@@ -1,30 +1,56 @@
 <div class="p-3 mb-2 bg-success text-white">
-  <h2>Doctors</h2>
-  <a href="/doctors/create" class="btn alert-info">Add</a>
-  <table class="table table-primary table-hover" style="margin-top: 10px">      
-    <thead>
-      <tr>
-        <th scope="col">License No.</th>
-        <th scope="col">Name</th>
-        <th scope="col">Specialization</th>
-        <th scope="col">City</th>
-        <th scope="col" style="text-align: center;">Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% doctors.forEach(doctor => { %>
+  <form>
+    <h2>Doctors</h2>
+    <div action="/doctors" method="GET" class="form-inline">
+      <div class="form-inline">
+        <a href="/doctors/create" class="btn alert-info">Add</a>
+        <input 
+          type="text" 
+          name="search" 
+          placeholder="Search doctors ..." 
+          class="btn alert-info" 
+          style="width: 243px; margin-left: 64.4%; border-radius: 5px; height: 30px; background-color: white;">
+        <input type="submit" value="Search" class="btn alert-info" style="margin-left: 5px">
+      </div>
+    </div>
+    <div 
+      class="btn-group" 
+      role="group" 
+      aria-label="Basic checkbox toggle button group" 
+      style="background-color: rgb(207, 244, 252); border-radius: 5px; margin: 0.4% 0% 0% 70%;"
+    >
+      <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off">
+      <label class="btn btn-outline-primary" for="btncheck1" style="width: 164px;">Name</label>
+
+      <input type="checkbox" class="btn-check"  id="btncheck2" autocomplete="off">
+      <label class="btn btn-outline-primary" for="btncheck2" style="width: 164px;">City</label>
+
+    </div>
+    <table class="table table-primary table-hover" style="margin-top: 10px">      
+      <thead class="titles">
         <tr>
-          <th scope="row"><%= doctor.licence_number %></th>
-          <td><%= doctor.full_name %></td>
-          <td><%= doctor.specialization %></td>
-          <td><%= doctor.city %></td>
-          <td style="text-align: center;">
-            <a href="/doctors/<%= doctor._id %>" class="btn btn-warning">Edit</a>
-            <button type="button" onclick="deleteDoctor(`<%= doctor._id %>`)" class="btn btn-danger">Delete</button>
-            <a href="/doctors/<%= doctor._id %>/patients" class="btn btn-warning">Patients</a>
-          </td>
+          <th scope="col">License No.</th>
+          <th scope="col">Name</th>
+          <th scope="col">Specialization</th>
+          <th scope="col">City</th>
+          <th scope="col" style="text-align: center;">Actions</th>
         </tr>
-      <% }) %>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+        <% doctors.forEach(doctor => { %>
+          <tr>
+            <th scope="row"><%= doctor.licence_number %></th>
+            <td><%= doctor.full_name %></td>
+            <td><%= doctor.specialization %></td>
+            <td><%= doctor.city %></td>
+            <td style="text-align: center;">
+              <a href="/doctors/<%= doctor._id %>" class="btn btn-warning">Edit</a>
+              <button type="button" onclick="deleteDoctor(`<%= doctor._id %>`)" class="btn btn-danger">Delete</button>
+              <a href="/doctors/<%= doctor._id %>/patients" class="btn btn-warning">Patients</a>
+            </td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </form>
 </div>
