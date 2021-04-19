@@ -1,39 +1,30 @@
+<link rel="stylesheet" type="text/css" href="/stylesheets/doctor.css"/>
+
 <div class="p-3 mb-2 bg-success text-white">
   <form>
-    <h2>Doctors</h2>
+    <h2 class="fdfd">Doctors</h2>
     <div action="/doctors" method="GET" class="form-inline">
       <div class="form-inline">
         <a href="/doctors/create" class="btn alert-info">Add</a>
-        <input 
-          type="text" 
-          name="search" 
-          placeholder="Search doctors ..." 
-          class="btn alert-info" 
-          style="width: 243px; margin-left: 64.4%; border-radius: 5px; height: 30px; background-color: white;">
-        <input type="submit" value="Search" class="btn alert-info" style="margin-left: 5px">
+        <input type="text" name="search" placeholder="Search doctors ..." class="btn alert-info" id="search-input">
+        <input type="submit" value="Search" class="btn alert-info" id="btn-input">
       </div>
     </div>
-    <div 
-      class="btn-group" 
-      role="group" 
-      aria-label="Basic checkbox toggle button group" 
-      style="background-color: rgb(207, 244, 252); border-radius: 5px; margin: 0.4% 0% 0% 70%;"
-    >
+    <div class="btn-group" id="checkbox-div" role="group" aria-label="Basic checkbox toggle button group" >
       <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off">
-      <label class="btn btn-outline-primary" for="btncheck1" style="width: 164px;">Name</label>
+      <label class="btn btn-outline-primary" id="checkbox-label" for="btncheck1">Name</label>
 
       <input type="checkbox" class="btn-check"  id="btncheck2" autocomplete="off">
-      <label class="btn btn-outline-primary" for="btncheck2" style="width: 164px;">City</label>
-
+      <label class="btn btn-outline-primary" id="checkbox-label" for="btncheck2">City</label>
     </div>
-    <table class="table table-primary table-hover" style="margin-top: 10px">      
+    <table class="table table-primary table-hover" id="table">      
       <thead class="titles">
         <tr>
           <th scope="col">License No.</th>
           <th scope="col">Name</th>
           <th scope="col">Specialization</th>
           <th scope="col">City</th>
-          <th scope="col" style="text-align: center;">Actions</th>
+          <th scope="col" class="th">Actions</th>
         </tr>
       </thead>
       <tbody>
@@ -43,7 +34,7 @@
             <td><%= doctor.full_name %></td>
             <td><%= doctor.specialization %></td>
             <td><%= doctor.city %></td>
-            <td style="text-align: center;">
+            <td class="th">
               <a href="/doctors/<%= doctor._id %>" class="btn btn-warning">Edit</a>
               <button type="button" onclick="deleteDoctor(`<%= doctor._id %>`)" class="btn btn-danger">Delete</button>
               <a href="/doctors/<%= doctor._id %>/patients" class="btn btn-warning">Patients</a>

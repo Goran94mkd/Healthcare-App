@@ -9,11 +9,7 @@ module.exports = {
   getAll: function (req, res) {
     if (req.query.search) {
       const regex = new RegExp(escapeRegex(req.query.search), 'gi');
-      Doctor.find({
-        $or: [
-          { full_name: regex },
-          { city: regex }]
-      }, function (err, allDoctors) {
+      Doctor.find({ $or: [{ full_name: regex }, { city: regex }] }, function (err, allDoctors) {
         if (err) {
           console.log(err);
         } else {
@@ -21,7 +17,7 @@ module.exports = {
         }
       });
     } else {
-        Doctor.find({}, function (err, allDoctors) {
+      Doctor.find({}, function (err, allDoctors) {
         if (err) {
           console.log(err);
         } else {
