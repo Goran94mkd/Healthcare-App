@@ -1,27 +1,47 @@
 const Doctor = require('../models/doctor');
 const Patient = require('../models/patient');
 
-function escapeRegex(text) {
-  return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '');
-};
+// function escapeRegex(text) {
+//   return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '');
+// };
 
 module.exports = {
   getAll: function (req, res) {
-    if (req.query.search) {
-      const regex = new RegExp(escapeRegex(req.query.search), 'gi');
-      Doctor.find({ $or: [{ full_name: regex }, { city: regex }] }, function (err, allDoctors) {
-        if (err) {
-          console.log(err);
-        } else {
-          res.render("doctors/index", { doctors: allDoctors });
+    if (req.query) {
+      const regex = new RegExp(req.query.search, "gi");
+      if (req.query.select === "name") {
+        Doctor.find({ full_name: regex }, function (err, getAllDoctors) {
+          if (err) {
+            console.log(err);
+          } else {
+            res.render("doctors/index", { doctors: getAllDoctors });
+          }
+        });
+      } else if (req.query.select === "city") {
+        Doctor.find({ city: regex }, function (err, getAllDoctors) {
+          if (err) {
+            console.log(err);
+          } else {
+            res.render("doctors/index", { doctors: getAllDoctors });
+          }
         }
-      });
+        );
+      } else {
+        Doctor.find({ $or: [{ full_name: regex }, { city: regex }] }, function (err, getAllDoctors) {
+          if (err) {
+            console.log(err);
+          } else {
+            res.render("doctors/index", { doctors: getAllDoctors });
+          }
+        }
+        );
+      }
     } else {
-      Doctor.find({}, function (err, allDoctors) {
+      Doctor.find({}, function (err, getAllDoctors) {
         if (err) {
           console.log(err);
         } else {
-          res.render("doctors/index", { doctors: allDoctors });
+          res.render("doctors/index", { doctors: getAllDoctors });
         }
       });
     }
